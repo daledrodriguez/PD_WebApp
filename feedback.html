@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CritiCode - Feedback</title>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <link rel="stylesheet" href="styles2.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-tomorrow.min.css" /> <!-- Prism CSS for syntax highlighting -->
+</head>
+
+<body>
+    <div class="feedback-container">
+        <div class="header">
+            <img src="logo.png" alt="Small Logo" class="small-logo" />
+            <span class="hero-highlight">CritiCode</span>
+        </div>
+
+        <div class="content">
+            <div class="left-column">
+                <div class="chat-section">
+                    <h2 class="section-title">Activity Instruction</h2>
+                    <div class="chat-box">
+                        <textarea class="chat-input" disabled>
+The Chef likes to stay in touch with his staff. So, the Chef, the head server, and the sous-chef all carry two-way transceivers so they can stay in constant contact. Of course, these transceivers have a limited range, so if two are too far apart, they cannot communicate directly. However, they can still communicate if a third transceiver within range can act as a relay. Help the Chef determine if it’s possible for all three to communicate with each other, even indirectly, given the range R and the coordinates of each person.
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="chat-section">
+                    <h2 class="section-title">My Code Solution</h2>
+                    <div class="chat-box">
+                        <textarea class="chat-input" disabled>
+import math
+no_of_testcases = int(input())
+for each in range(no_of_testcases):
+    dist = int(input())
+    point_1 = map(int, input().split())
+    point_2 = map(int, input().split())
+    point_3 = map(int, input().split())
+    point_12 = math.sqrt(math.pow((point_1[0] - point_2[0]), 2) + math.pow((point_1[1] - point_2[1]), 2))
+    point_23 = math.sqrt(math.pow((point_2[0] - point_3[0]), 2) + math.pow((point_2[1] - point_3[1]), 2))
+    point_31 = math.sqrt(math.pow((point_3[0] - point_1[0]), 2) + math.pow((point_3[1] - point_1[1]), 2))
+    count = 0
+    if point_12 <= dist:
+        count += 1
+    if point_23 <= dist:
+        count += 1
+    if point_31 <= dist:
+        count += 1
+    if count >= 2:
+        print("yes")
+    else:
+        print("no")
+                        </textarea>
+                        <div class="chat-buttons">
+                            <button class="send-button" onclick="sendCodeSolution()">
+                                <img src="send-icon.png" alt="Send" class="button-icon" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feedback-box">
+                <h2 class="feedback-title">Generated Feedback</h2>
+                <div id="feedback-content" class="feedback-content">
+                    <p>Feedback will appear here once generated...</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading-overlay">
+            <div class="loading-circle"></div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script> <!-- Prism JS -->
+    <script src="script.js"></script>
+</body>
+</html>
