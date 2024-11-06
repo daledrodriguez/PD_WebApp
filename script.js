@@ -36,3 +36,19 @@ function typeFeedback() {
 
     type();
 }
+
+// Function to navigate to the feedback page with loading and transition
+function navigateToFeedback() {
+    // Start fade-out animation on the content
+    document.querySelector('.content-container').classList.add('fade-out');
+    
+    // Show the loading screen after the content fade-out
+    setTimeout(() => {
+        document.getElementById('loading-screen').classList.remove('hidden');
+    }, 500); // Wait for the fade-out transition
+
+    // Redirect to feedback page after 2 seconds
+    setTimeout(() => {
+        window.location.href = "feedback.html";
+    }, 2000); // Adjust the delay as needed
+}
