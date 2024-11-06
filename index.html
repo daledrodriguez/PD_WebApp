@@ -11,7 +11,12 @@
 </head>
 
 <body>
-    <div class="main-container">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen hidden">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="main-container content-container">
         <!-- Centered Content -->
         <div class="content">
             <h1 class="main-title">
@@ -24,8 +29,8 @@
                     <label class="label">Try Our Personalized Code Feedback System</label>
                 </div>
 
-                <!-- Button redirects to the new page -->
-                <a href="feedback.html" class="signup-button">Get Code Feedback</a>
+                <!-- Button triggers loading and transition -->
+                <button type="button" class="signup-button" onclick="navigateToFeedback()">Get Code Feedback</button>
             </form>
         </div>
 
@@ -40,5 +45,23 @@
             - Project Design By <a class="footer-link" href="">Team 66</a>
         </div>
     </div>
+
+    <script>
+        // Function to navigate to the feedback page with loading and transition
+        function navigateToFeedback() {
+            // Start fade-out animation on the content
+            document.querySelector('.content-container').classList.add('fade-out');
+
+            // Show the loading screen after the content fade-out
+            setTimeout(() => {
+                document.getElementById('loading-screen').classList.remove('hidden');
+            }, 500); // Wait for the fade-out transition
+
+            // Redirect to feedback page after 2 seconds
+            setTimeout(() => {
+                window.location.href = "feedback.html";
+            }, 2000); // Adjust the delay as needed
+        }
+    </script>
 </body>
 </html>
